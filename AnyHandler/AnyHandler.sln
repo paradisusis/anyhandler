@@ -1,0 +1,24 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+# SharpDevelop 4.4
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AnyHandler", "AnyHandler.csproj", "{EBB990F2-6310-4103-89AF-767F17712999}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AnyHandlerHook", "..\..\BAK\AnyCopy\anycopy\AnyCopyHook\AnyHandlerHook.csproj", "{03299302-0C03-4F8A-960F-F0D7A0BADDE1}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{EBB990F2-6310-4103-89AF-767F17712999}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EBB990F2-6310-4103-89AF-767F17712999}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EBB990F2-6310-4103-89AF-767F17712999}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EBB990F2-6310-4103-89AF-767F17712999}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{03299302-0C03-4F8A-960F-F0D7A0BADDE1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{03299302-0C03-4F8A-960F-F0D7A0BADDE1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{03299302-0C03-4F8A-960F-F0D7A0BADDE1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{03299302-0C03-4F8A-960F-F0D7A0BADDE1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+	EndGlobalSection
+EndGlobal
