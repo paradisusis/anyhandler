@@ -1,4 +1,6 @@
-﻿
+﻿/**
+ * C:\Windows\Microsoft.NET\Framework\v4.0.30319\RegAsm.exe AnyHandlerHook.dll /codebase /regfile:AnyHandlerHook.reg
+ */
 
 using System;
 using System.Runtime.InteropServices;
@@ -34,7 +36,7 @@ namespace AnyHandlerHook
         uint dwDestAttribs)
         {
             //#
-            MessageBox.Show($"{pszSrcFile}{Environment.NewLine}{pszDestFile}", $"{ Enum.GetName(typeof(CopyHookOperation), wFunc) }");
+            MessageBox.Show($"This: {pszSrcFile}{Environment.NewLine}To: {pszDestFile}", $"{ wFunc }");
 
             return (uint)CopyHookResult.IDNO;
         }

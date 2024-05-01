@@ -10,11 +10,11 @@ using System.Runtime.InteropServices;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("AnyHandlerHook")]
-[assembly: AssemblyDescription("Dll for AnyHandler.")]
+[assembly: AssemblyDescription("DLL for AnyHandler.")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Paradisus.is")]
 [assembly: AssemblyProduct("AnyHandlerHook")]
-[assembly: AssemblyCopyright("Copyright 2024 - Paradisus.is")]
+[assembly: AssemblyCopyright("Copyright 2024 - Victor L. Senior")]
 [assembly: AssemblyTrademark("paradisus.is")]
 [assembly: AssemblyCulture("")]
 
