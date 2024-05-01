@@ -80,23 +80,13 @@ namespace AnyHandler
                 registryModifier.RemoveAnyHandler();
 
                 // Advise user
-                MessageBox.Show($"AnyHandler has been removed!", "Removed", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show($"AnyHandler has been removed from Windows Explorer!{Environment.NewLine}Changes will be picked on next restart.", "Removed", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             catch (Exception ex)
             {
                 // Advise user, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 MessageBox.Show($"{ex.Message}", "Registry error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-        }
-
-        /// <summary>
-        /// Handles the exit tool strip menu item click.
-        /// </summary>
-        /// <param name="sender">Sender object.</param>
-        /// <param name="e">Event arguments.</param>
-        private void OnExitToolStripMenuItemClick(object sender, EventArgs e)
-        {
-
         }
 
         /// <summary>
@@ -167,6 +157,17 @@ namespace AnyHandler
         private void OnMainFormFormClosing(object sender, FormClosingEventArgs e)
         {
 
+        }
+
+        /// <summary>
+        /// Handles the exit tool strip menu item click.
+        /// </summary>
+        /// <param name="sender">Sender object.</param>
+        /// <param name="e">Event arguments.</param>
+        private void OnExitToolStripMenuItemClick(object sender, EventArgs e)
+        {
+            // Close the program
+            this.Close();
         }
     }
 }
