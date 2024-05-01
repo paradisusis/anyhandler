@@ -69,7 +69,24 @@ namespace AnyHandler
         /// <param name="e">Event arguments.</param>
         private void OnRemoveHandlersToolStripMenuItemClick(object sender, EventArgs e)
         {
+            /* Remove from registry */
 
+            try
+            {
+                // Set new registry modifier
+                RegistryModifier registryModifier = new RegistryModifier();
+
+                // Remove it
+                registryModifier.RemoveAnyHandler();
+
+                // Advise user
+                MessageBox.Show($"AnyHandler has been removed!", "Removed", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (Exception ex)
+            {
+                // Advise user, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show($"{ex.Message}", "Registry error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         /// <summary>
