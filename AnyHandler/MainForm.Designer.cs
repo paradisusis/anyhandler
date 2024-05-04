@@ -41,6 +41,7 @@ namespace AnyHandler
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.optionsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.alwaysOnTopToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.addquotesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.moreReleasesParadisusisToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.originalThreadDonationCodercomToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -48,49 +49,48 @@ namespace AnyHandler
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mainStatusStrip = new System.Windows.Forms.StatusStrip();
-            this.toolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
-            this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.copyTextToolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
+            this.copyValueToolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabel2 = new System.Windows.Forms.ToolStripStatusLabel();
-            this.toolStripStatusLabel4 = new System.Windows.Forms.ToolStripStatusLabel();
-            this.toolStripStatusLabel5 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.deleteTextToolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
+            this.deletecopyValueToolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabel3 = new System.Windows.Forms.ToolStripStatusLabel();
-            this.toolStripStatusLabel6 = new System.Windows.Forms.ToolStripStatusLabel();
-            this.toolStripStatusLabel7 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.moveTextToolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
+            this.movecopyValueToolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabel8 = new System.Windows.Forms.ToolStripStatusLabel();
-            this.toolStripStatusLabel9 = new System.Windows.Forms.ToolStripStatusLabel();
-            this.toolStripStatusLabel10 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.renameTextToolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
+            this.renamecopyValueToolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.mainTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.checkBox2 = new System.Windows.Forms.CheckBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.button2 = new System.Windows.Forms.Button();
+            this.moveHandlerCheckBox = new System.Windows.Forms.CheckBox();
+            this.moveProgramTextBox = new System.Windows.Forms.TextBox();
+            this.moveArgumentsTextBox = new System.Windows.Forms.TextBox();
+            this.moveBrowseButton = new System.Windows.Forms.Button();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.renameHandlerCheckBox = new System.Windows.Forms.CheckBox();
+            this.renameProgramTextBox = new System.Windows.Forms.TextBox();
+            this.renameArgumentsTextBox = new System.Windows.Forms.TextBox();
+            this.renameBrowseButton = new System.Windows.Forms.Button();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.deleteProgramLabel = new System.Windows.Forms.Label();
             this.deleteArgumentsLabel = new System.Windows.Forms.Label();
             this.deleteHandlerCheckBox = new System.Windows.Forms.CheckBox();
             this.deleteProgramTextBox = new System.Windows.Forms.TextBox();
             this.deleteArgumentsTextBox = new System.Windows.Forms.TextBox();
-            this.deleteProgramButton = new System.Windows.Forms.Button();
+            this.deleteBrowseButton = new System.Windows.Forms.Button();
             this.copyTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
             this.copyProgramLabel = new System.Windows.Forms.Label();
             this.copyArgumentsLabel = new System.Windows.Forms.Label();
             this.copyHandlerCheckBox = new System.Windows.Forms.CheckBox();
             this.copyProgramTextBox = new System.Windows.Forms.TextBox();
             this.copyArgumentsTextBox = new System.Windows.Forms.TextBox();
-            this.copyProgramButton = new System.Windows.Forms.Button();
+            this.copyBrowseButton = new System.Windows.Forms.Button();
             this.processButton = new System.Windows.Forms.Button();
             this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
-            this.addquotesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mainMenuStrip.SuspendLayout();
             this.mainStatusStrip.SuspendLayout();
             this.mainTableLayoutPanel.SuspendLayout();
@@ -170,8 +170,16 @@ namespace AnyHandler
             // alwaysOnTopToolStripMenuItem
             // 
             this.alwaysOnTopToolStripMenuItem.Name = "alwaysOnTopToolStripMenuItem";
-            this.alwaysOnTopToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.alwaysOnTopToolStripMenuItem.Size = new System.Drawing.Size(149, 22);
             this.alwaysOnTopToolStripMenuItem.Text = "&Always on top";
+            // 
+            // addquotesToolStripMenuItem
+            // 
+            this.addquotesToolStripMenuItem.Checked = true;
+            this.addquotesToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.addquotesToolStripMenuItem.Name = "addquotesToolStripMenuItem";
+            this.addquotesToolStripMenuItem.Size = new System.Drawing.Size(149, 22);
+            this.addquotesToolStripMenuItem.Text = "Add &quotes";
             // 
             // helpToolStripMenuItem
             // 
@@ -224,35 +232,35 @@ namespace AnyHandler
             // mainStatusStrip
             // 
             this.mainStatusStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-                                    this.toolStripStatusLabel,
-                                    this.toolStripStatusLabel1,
+                                    this.copyTextToolStripStatusLabel,
+                                    this.copyValueToolStripStatusLabel,
                                     this.toolStripStatusLabel2,
-                                    this.toolStripStatusLabel4,
-                                    this.toolStripStatusLabel5,
+                                    this.deleteTextToolStripStatusLabel,
+                                    this.deletecopyValueToolStripStatusLabel,
                                     this.toolStripStatusLabel3,
-                                    this.toolStripStatusLabel6,
-                                    this.toolStripStatusLabel7,
+                                    this.moveTextToolStripStatusLabel,
+                                    this.movecopyValueToolStripStatusLabel,
                                     this.toolStripStatusLabel8,
-                                    this.toolStripStatusLabel9,
-                                    this.toolStripStatusLabel10});
+                                    this.renameTextToolStripStatusLabel,
+                                    this.renamecopyValueToolStripStatusLabel});
             this.mainStatusStrip.Location = new System.Drawing.Point(0, 435);
             this.mainStatusStrip.Name = "mainStatusStrip";
             this.mainStatusStrip.Size = new System.Drawing.Size(404, 22);
             this.mainStatusStrip.SizingGrip = false;
             this.mainStatusStrip.TabIndex = 48;
             // 
-            // toolStripStatusLabel
+            // copyTextToolStripStatusLabel
             // 
-            this.toolStripStatusLabel.Name = "toolStripStatusLabel";
-            this.toolStripStatusLabel.Size = new System.Drawing.Size(38, 17);
-            this.toolStripStatusLabel.Text = "Copy:";
+            this.copyTextToolStripStatusLabel.Name = "copyTextToolStripStatusLabel";
+            this.copyTextToolStripStatusLabel.Size = new System.Drawing.Size(38, 17);
+            this.copyTextToolStripStatusLabel.Text = "Copy:";
             // 
-            // toolStripStatusLabel1
+            // copyValueToolStripStatusLabel
             // 
-            this.toolStripStatusLabel1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
-            this.toolStripStatusLabel1.Size = new System.Drawing.Size(33, 17);
-            this.toolStripStatusLabel1.Text = "false";
+            this.copyValueToolStripStatusLabel.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.copyValueToolStripStatusLabel.Name = "copyValueToolStripStatusLabel";
+            this.copyValueToolStripStatusLabel.Size = new System.Drawing.Size(33, 17);
+            this.copyValueToolStripStatusLabel.Text = "false";
             // 
             // toolStripStatusLabel2
             // 
@@ -260,18 +268,18 @@ namespace AnyHandler
             this.toolStripStatusLabel2.Size = new System.Drawing.Size(12, 17);
             this.toolStripStatusLabel2.Text = "/";
             // 
-            // toolStripStatusLabel4
+            // deleteTextToolStripStatusLabel
             // 
-            this.toolStripStatusLabel4.Name = "toolStripStatusLabel4";
-            this.toolStripStatusLabel4.Size = new System.Drawing.Size(43, 17);
-            this.toolStripStatusLabel4.Text = "Delete:";
+            this.deleteTextToolStripStatusLabel.Name = "deleteTextToolStripStatusLabel";
+            this.deleteTextToolStripStatusLabel.Size = new System.Drawing.Size(43, 17);
+            this.deleteTextToolStripStatusLabel.Text = "Delete:";
             // 
-            // toolStripStatusLabel5
+            // deletecopyValueToolStripStatusLabel
             // 
-            this.toolStripStatusLabel5.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.toolStripStatusLabel5.Name = "toolStripStatusLabel5";
-            this.toolStripStatusLabel5.Size = new System.Drawing.Size(31, 17);
-            this.toolStripStatusLabel5.Text = "true";
+            this.deletecopyValueToolStripStatusLabel.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.deletecopyValueToolStripStatusLabel.Name = "deletecopyValueToolStripStatusLabel";
+            this.deletecopyValueToolStripStatusLabel.Size = new System.Drawing.Size(33, 17);
+            this.deletecopyValueToolStripStatusLabel.Text = "false";
             // 
             // toolStripStatusLabel3
             // 
@@ -279,18 +287,18 @@ namespace AnyHandler
             this.toolStripStatusLabel3.Size = new System.Drawing.Size(12, 17);
             this.toolStripStatusLabel3.Text = "/";
             // 
-            // toolStripStatusLabel6
+            // moveTextToolStripStatusLabel
             // 
-            this.toolStripStatusLabel6.Name = "toolStripStatusLabel6";
-            this.toolStripStatusLabel6.Size = new System.Drawing.Size(40, 17);
-            this.toolStripStatusLabel6.Text = "Move:";
+            this.moveTextToolStripStatusLabel.Name = "moveTextToolStripStatusLabel";
+            this.moveTextToolStripStatusLabel.Size = new System.Drawing.Size(40, 17);
+            this.moveTextToolStripStatusLabel.Text = "Move:";
             // 
-            // toolStripStatusLabel7
+            // movecopyValueToolStripStatusLabel
             // 
-            this.toolStripStatusLabel7.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.toolStripStatusLabel7.Name = "toolStripStatusLabel7";
-            this.toolStripStatusLabel7.Size = new System.Drawing.Size(33, 17);
-            this.toolStripStatusLabel7.Text = "false";
+            this.movecopyValueToolStripStatusLabel.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.movecopyValueToolStripStatusLabel.Name = "movecopyValueToolStripStatusLabel";
+            this.movecopyValueToolStripStatusLabel.Size = new System.Drawing.Size(33, 17);
+            this.movecopyValueToolStripStatusLabel.Text = "false";
             // 
             // toolStripStatusLabel8
             // 
@@ -298,18 +306,18 @@ namespace AnyHandler
             this.toolStripStatusLabel8.Size = new System.Drawing.Size(12, 17);
             this.toolStripStatusLabel8.Text = "/";
             // 
-            // toolStripStatusLabel9
+            // renameTextToolStripStatusLabel
             // 
-            this.toolStripStatusLabel9.Name = "toolStripStatusLabel9";
-            this.toolStripStatusLabel9.Size = new System.Drawing.Size(53, 17);
-            this.toolStripStatusLabel9.Text = "Rename:";
+            this.renameTextToolStripStatusLabel.Name = "renameTextToolStripStatusLabel";
+            this.renameTextToolStripStatusLabel.Size = new System.Drawing.Size(53, 17);
+            this.renameTextToolStripStatusLabel.Text = "Rename:";
             // 
-            // toolStripStatusLabel10
+            // renamecopyValueToolStripStatusLabel
             // 
-            this.toolStripStatusLabel10.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.toolStripStatusLabel10.Name = "toolStripStatusLabel10";
-            this.toolStripStatusLabel10.Size = new System.Drawing.Size(33, 17);
-            this.toolStripStatusLabel10.Text = "false";
+            this.renamecopyValueToolStripStatusLabel.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.renamecopyValueToolStripStatusLabel.Name = "renamecopyValueToolStripStatusLabel";
+            this.renamecopyValueToolStripStatusLabel.Size = new System.Drawing.Size(33, 17);
+            this.renamecopyValueToolStripStatusLabel.Text = "false";
             // 
             // mainTableLayoutPanel
             // 
@@ -341,10 +349,10 @@ namespace AnyHandler
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tableLayoutPanel2.Controls.Add(this.label3, 0, 1);
             this.tableLayoutPanel2.Controls.Add(this.label4, 0, 2);
-            this.tableLayoutPanel2.Controls.Add(this.checkBox2, 0, 0);
-            this.tableLayoutPanel2.Controls.Add(this.textBox3, 1, 1);
-            this.tableLayoutPanel2.Controls.Add(this.textBox4, 1, 2);
-            this.tableLayoutPanel2.Controls.Add(this.button2, 2, 1);
+            this.tableLayoutPanel2.Controls.Add(this.moveHandlerCheckBox, 0, 0);
+            this.tableLayoutPanel2.Controls.Add(this.moveProgramTextBox, 1, 1);
+            this.tableLayoutPanel2.Controls.Add(this.moveArgumentsTextBox, 1, 2);
+            this.tableLayoutPanel2.Controls.Add(this.moveBrowseButton, 2, 1);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel2.Location = new System.Drawing.Point(3, 187);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
@@ -377,50 +385,51 @@ namespace AnyHandler
             this.label4.Text = "Arguments:";
             this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // checkBox2
+            // moveHandlerCheckBox
             // 
-            this.checkBox2.Checked = true;
-            this.checkBox2.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.tableLayoutPanel2.SetColumnSpan(this.checkBox2, 3);
-            this.checkBox2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.checkBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBox2.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.checkBox2.Location = new System.Drawing.Point(3, 3);
-            this.checkBox2.Name = "checkBox2";
-            this.checkBox2.Size = new System.Drawing.Size(392, 24);
-            this.checkBox2.TabIndex = 1;
-            this.checkBox2.Text = "&Move handler:";
-            this.checkBox2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.checkBox2.UseVisualStyleBackColor = true;
+            this.moveHandlerCheckBox.Checked = true;
+            this.moveHandlerCheckBox.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.tableLayoutPanel2.SetColumnSpan(this.moveHandlerCheckBox, 3);
+            this.moveHandlerCheckBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.moveHandlerCheckBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.moveHandlerCheckBox.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.moveHandlerCheckBox.Location = new System.Drawing.Point(3, 3);
+            this.moveHandlerCheckBox.Name = "moveHandlerCheckBox";
+            this.moveHandlerCheckBox.Size = new System.Drawing.Size(392, 24);
+            this.moveHandlerCheckBox.TabIndex = 9;
+            this.moveHandlerCheckBox.Text = "&Move handler:";
+            this.moveHandlerCheckBox.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.moveHandlerCheckBox.UseVisualStyleBackColor = true;
             // 
-            // textBox3
+            // moveProgramTextBox
             // 
-            this.textBox3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.textBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox3.Location = new System.Drawing.Point(103, 33);
-            this.textBox3.Margin = new System.Windows.Forms.Padding(3, 3, 0, 3);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(265, 24);
-            this.textBox3.TabIndex = 2;
+            this.moveProgramTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.moveProgramTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.moveProgramTextBox.Location = new System.Drawing.Point(103, 33);
+            this.moveProgramTextBox.Margin = new System.Windows.Forms.Padding(3, 3, 0, 3);
+            this.moveProgramTextBox.Name = "moveProgramTextBox";
+            this.moveProgramTextBox.Size = new System.Drawing.Size(265, 24);
+            this.moveProgramTextBox.TabIndex = 10;
             // 
-            // textBox4
+            // moveArgumentsTextBox
             // 
-            this.tableLayoutPanel2.SetColumnSpan(this.textBox4, 2);
-            this.textBox4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.textBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox4.Location = new System.Drawing.Point(103, 61);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(292, 24);
-            this.textBox4.TabIndex = 4;
+            this.tableLayoutPanel2.SetColumnSpan(this.moveArgumentsTextBox, 2);
+            this.moveArgumentsTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.moveArgumentsTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.moveArgumentsTextBox.Location = new System.Drawing.Point(103, 61);
+            this.moveArgumentsTextBox.Name = "moveArgumentsTextBox";
+            this.moveArgumentsTextBox.Size = new System.Drawing.Size(292, 24);
+            this.moveArgumentsTextBox.TabIndex = 12;
             // 
-            // button2
+            // moveBrowseButton
             // 
-            this.button2.Location = new System.Drawing.Point(371, 33);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(24, 20);
-            this.button2.TabIndex = 3;
-            this.button2.Text = "...";
-            this.button2.UseVisualStyleBackColor = true;
+            this.moveBrowseButton.Location = new System.Drawing.Point(371, 33);
+            this.moveBrowseButton.Name = "moveBrowseButton";
+            this.moveBrowseButton.Size = new System.Drawing.Size(24, 20);
+            this.moveBrowseButton.TabIndex = 11;
+            this.moveBrowseButton.Text = "...";
+            this.moveBrowseButton.UseVisualStyleBackColor = true;
+            this.moveBrowseButton.Click += new System.EventHandler(this.OnMoveBrowseButtonClick);
             // 
             // tableLayoutPanel3
             // 
@@ -430,10 +439,10 @@ namespace AnyHandler
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tableLayoutPanel3.Controls.Add(this.label1, 0, 1);
             this.tableLayoutPanel3.Controls.Add(this.label2, 0, 2);
-            this.tableLayoutPanel3.Controls.Add(this.checkBox1, 0, 0);
-            this.tableLayoutPanel3.Controls.Add(this.textBox1, 1, 1);
-            this.tableLayoutPanel3.Controls.Add(this.textBox2, 1, 2);
-            this.tableLayoutPanel3.Controls.Add(this.button1, 2, 1);
+            this.tableLayoutPanel3.Controls.Add(this.renameHandlerCheckBox, 0, 0);
+            this.tableLayoutPanel3.Controls.Add(this.renameProgramTextBox, 1, 1);
+            this.tableLayoutPanel3.Controls.Add(this.renameArgumentsTextBox, 1, 2);
+            this.tableLayoutPanel3.Controls.Add(this.renameBrowseButton, 2, 1);
             this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel3.Location = new System.Drawing.Point(3, 279);
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
@@ -466,50 +475,51 @@ namespace AnyHandler
             this.label2.Text = "Arguments:";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // checkBox1
+            // renameHandlerCheckBox
             // 
-            this.checkBox1.Checked = true;
-            this.checkBox1.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.tableLayoutPanel3.SetColumnSpan(this.checkBox1, 3);
-            this.checkBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.checkBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBox1.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.checkBox1.Location = new System.Drawing.Point(3, 3);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(392, 24);
-            this.checkBox1.TabIndex = 1;
-            this.checkBox1.Text = "&Rename handler:";
-            this.checkBox1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.checkBox1.UseVisualStyleBackColor = true;
+            this.renameHandlerCheckBox.Checked = true;
+            this.renameHandlerCheckBox.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.tableLayoutPanel3.SetColumnSpan(this.renameHandlerCheckBox, 3);
+            this.renameHandlerCheckBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.renameHandlerCheckBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.renameHandlerCheckBox.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.renameHandlerCheckBox.Location = new System.Drawing.Point(3, 3);
+            this.renameHandlerCheckBox.Name = "renameHandlerCheckBox";
+            this.renameHandlerCheckBox.Size = new System.Drawing.Size(392, 24);
+            this.renameHandlerCheckBox.TabIndex = 13;
+            this.renameHandlerCheckBox.Text = "&Rename handler:";
+            this.renameHandlerCheckBox.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.renameHandlerCheckBox.UseVisualStyleBackColor = true;
             // 
-            // textBox1
+            // renameProgramTextBox
             // 
-            this.textBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(103, 33);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(3, 3, 0, 3);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(265, 24);
-            this.textBox1.TabIndex = 2;
+            this.renameProgramTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.renameProgramTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.renameProgramTextBox.Location = new System.Drawing.Point(103, 33);
+            this.renameProgramTextBox.Margin = new System.Windows.Forms.Padding(3, 3, 0, 3);
+            this.renameProgramTextBox.Name = "renameProgramTextBox";
+            this.renameProgramTextBox.Size = new System.Drawing.Size(265, 24);
+            this.renameProgramTextBox.TabIndex = 14;
             // 
-            // textBox2
+            // renameArgumentsTextBox
             // 
-            this.tableLayoutPanel3.SetColumnSpan(this.textBox2, 2);
-            this.textBox2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.textBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox2.Location = new System.Drawing.Point(103, 61);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(292, 24);
-            this.textBox2.TabIndex = 4;
+            this.tableLayoutPanel3.SetColumnSpan(this.renameArgumentsTextBox, 2);
+            this.renameArgumentsTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.renameArgumentsTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.renameArgumentsTextBox.Location = new System.Drawing.Point(103, 61);
+            this.renameArgumentsTextBox.Name = "renameArgumentsTextBox";
+            this.renameArgumentsTextBox.Size = new System.Drawing.Size(292, 24);
+            this.renameArgumentsTextBox.TabIndex = 16;
             // 
-            // button1
+            // renameBrowseButton
             // 
-            this.button1.Location = new System.Drawing.Point(371, 33);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(24, 20);
-            this.button1.TabIndex = 3;
-            this.button1.Text = "...";
-            this.button1.UseVisualStyleBackColor = true;
+            this.renameBrowseButton.Location = new System.Drawing.Point(371, 33);
+            this.renameBrowseButton.Name = "renameBrowseButton";
+            this.renameBrowseButton.Size = new System.Drawing.Size(24, 20);
+            this.renameBrowseButton.TabIndex = 15;
+            this.renameBrowseButton.Text = "...";
+            this.renameBrowseButton.UseVisualStyleBackColor = true;
+            this.renameBrowseButton.Click += new System.EventHandler(this.OnRenameBrowseButtonClick);
             // 
             // tableLayoutPanel1
             // 
@@ -522,7 +532,7 @@ namespace AnyHandler
             this.tableLayoutPanel1.Controls.Add(this.deleteHandlerCheckBox, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.deleteProgramTextBox, 1, 1);
             this.tableLayoutPanel1.Controls.Add(this.deleteArgumentsTextBox, 1, 2);
-            this.tableLayoutPanel1.Controls.Add(this.deleteProgramButton, 2, 1);
+            this.tableLayoutPanel1.Controls.Add(this.deleteBrowseButton, 2, 1);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(3, 95);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -591,15 +601,15 @@ namespace AnyHandler
             this.deleteArgumentsTextBox.Size = new System.Drawing.Size(292, 24);
             this.deleteArgumentsTextBox.TabIndex = 8;
             // 
-            // deleteProgramButton
+            // deleteBrowseButton
             // 
-            this.deleteProgramButton.Location = new System.Drawing.Point(371, 33);
-            this.deleteProgramButton.Name = "deleteProgramButton";
-            this.deleteProgramButton.Size = new System.Drawing.Size(24, 20);
-            this.deleteProgramButton.TabIndex = 7;
-            this.deleteProgramButton.Text = "...";
-            this.deleteProgramButton.UseVisualStyleBackColor = true;
-            this.deleteProgramButton.Click += new System.EventHandler(this.OnDeleteProgramButtonClick);
+            this.deleteBrowseButton.Location = new System.Drawing.Point(371, 33);
+            this.deleteBrowseButton.Name = "deleteBrowseButton";
+            this.deleteBrowseButton.Size = new System.Drawing.Size(24, 20);
+            this.deleteBrowseButton.TabIndex = 7;
+            this.deleteBrowseButton.Text = "...";
+            this.deleteBrowseButton.UseVisualStyleBackColor = true;
+            this.deleteBrowseButton.Click += new System.EventHandler(this.OnDeleteBrowseButtonClick);
             // 
             // copyTableLayoutPanel
             // 
@@ -612,7 +622,7 @@ namespace AnyHandler
             this.copyTableLayoutPanel.Controls.Add(this.copyHandlerCheckBox, 0, 0);
             this.copyTableLayoutPanel.Controls.Add(this.copyProgramTextBox, 1, 1);
             this.copyTableLayoutPanel.Controls.Add(this.copyArgumentsTextBox, 1, 2);
-            this.copyTableLayoutPanel.Controls.Add(this.copyProgramButton, 2, 1);
+            this.copyTableLayoutPanel.Controls.Add(this.copyBrowseButton, 2, 1);
             this.copyTableLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.copyTableLayoutPanel.Location = new System.Drawing.Point(3, 3);
             this.copyTableLayoutPanel.Name = "copyTableLayoutPanel";
@@ -681,15 +691,15 @@ namespace AnyHandler
             this.copyArgumentsTextBox.Size = new System.Drawing.Size(292, 24);
             this.copyArgumentsTextBox.TabIndex = 4;
             // 
-            // copyProgramButton
+            // copyBrowseButton
             // 
-            this.copyProgramButton.Location = new System.Drawing.Point(371, 33);
-            this.copyProgramButton.Name = "copyProgramButton";
-            this.copyProgramButton.Size = new System.Drawing.Size(24, 20);
-            this.copyProgramButton.TabIndex = 3;
-            this.copyProgramButton.Text = "...";
-            this.copyProgramButton.UseVisualStyleBackColor = true;
-            this.copyProgramButton.Click += new System.EventHandler(this.OnCopyProgramButtonClick);
+            this.copyBrowseButton.Location = new System.Drawing.Point(371, 33);
+            this.copyBrowseButton.Name = "copyBrowseButton";
+            this.copyBrowseButton.Size = new System.Drawing.Size(24, 20);
+            this.copyBrowseButton.TabIndex = 3;
+            this.copyBrowseButton.Text = "...";
+            this.copyBrowseButton.UseVisualStyleBackColor = true;
+            this.copyBrowseButton.Click += new System.EventHandler(this.OnCopyBrowseButtonClick);
             // 
             // processButton
             // 
@@ -707,14 +717,6 @@ namespace AnyHandler
             // 
             this.openFileDialog.DefaultExt = "exe";
             this.openFileDialog.Filter = "Exe Files (.exe)|*.exe|All Files (*.*)|*.*";
-            // 
-            // addquotesToolStripMenuItem
-            // 
-            this.addquotesToolStripMenuItem.Checked = true;
-            this.addquotesToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.addquotesToolStripMenuItem.Name = "addquotesToolStripMenuItem";
-            this.addquotesToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.addquotesToolStripMenuItem.Text = "Add &quotes";
             // 
             // MainForm
             // 
@@ -747,36 +749,36 @@ namespace AnyHandler
             this.PerformLayout();
         }
         private System.Windows.Forms.ToolStripMenuItem addquotesToolStripMenuItem;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.Button renameBrowseButton;
+        private System.Windows.Forms.TextBox renameArgumentsTextBox;
+        private System.Windows.Forms.TextBox renameProgramTextBox;
+        private System.Windows.Forms.CheckBox renameHandlerCheckBox;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.CheckBox checkBox2;
+        private System.Windows.Forms.Button moveBrowseButton;
+        private System.Windows.Forms.TextBox moveArgumentsTextBox;
+        private System.Windows.Forms.TextBox moveProgramTextBox;
+        private System.Windows.Forms.CheckBox moveHandlerCheckBox;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
-        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel10;
-        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel9;
+        private System.Windows.Forms.ToolStripStatusLabel renamecopyValueToolStripStatusLabel;
+        private System.Windows.Forms.ToolStripStatusLabel renameTextToolStripStatusLabel;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel8;
-        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel7;
-        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel6;
+        private System.Windows.Forms.ToolStripStatusLabel movecopyValueToolStripStatusLabel;
+        private System.Windows.Forms.ToolStripStatusLabel moveTextToolStripStatusLabel;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel2;
         private System.Windows.Forms.OpenFileDialog openFileDialog;
         private System.Windows.Forms.Button processButton;
-        private System.Windows.Forms.Button copyProgramButton;
+        private System.Windows.Forms.Button copyBrowseButton;
         private System.Windows.Forms.TextBox copyArgumentsTextBox;
         private System.Windows.Forms.TextBox copyProgramTextBox;
         private System.Windows.Forms.CheckBox copyHandlerCheckBox;
         private System.Windows.Forms.Label copyArgumentsLabel;
         private System.Windows.Forms.Label copyProgramLabel;
         private System.Windows.Forms.TableLayoutPanel copyTableLayoutPanel;
-        private System.Windows.Forms.Button deleteProgramButton;
+        private System.Windows.Forms.Button deleteBrowseButton;
         private System.Windows.Forms.TextBox deleteArgumentsTextBox;
         private System.Windows.Forms.TextBox deleteProgramTextBox;
         private System.Windows.Forms.CheckBox deleteHandlerCheckBox;
@@ -784,11 +786,11 @@ namespace AnyHandler
         private System.Windows.Forms.Label deleteProgramLabel;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.TableLayoutPanel mainTableLayoutPanel;
-        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel5;
-        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel4;
+        private System.Windows.Forms.ToolStripStatusLabel deletecopyValueToolStripStatusLabel;
+        private System.Windows.Forms.ToolStripStatusLabel deleteTextToolStripStatusLabel;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel3;
-        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
-        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel;
+        private System.Windows.Forms.ToolStripStatusLabel copyValueToolStripStatusLabel;
+        private System.Windows.Forms.ToolStripStatusLabel copyTextToolStripStatusLabel;
         private System.Windows.Forms.StatusStrip mainStatusStrip;
         private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;

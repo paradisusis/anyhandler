@@ -6,6 +6,8 @@ namespace AnyHandler
     using System;
     using System.Collections.Generic;
     using System.Drawing;
+    using System.IO;
+    using System.Reflection;
     using System.Windows.Forms;
 
     /// <summary>
@@ -29,25 +31,76 @@ namespace AnyHandler
         /// <param name="e">Event arguments.</param>
         private void OnProcessButtonClick(object sender, EventArgs e)
         {
-            // Add to registry
+            // Check if must remove AnyHandler
+            if (!this.copyHandlerCheckBox.Checked && !this.moveHandlerCheckBox.Checked && !this.deleteHandlerCheckBox.Checked && !this.renameHandlerCheckBox.Checked)
+            {
+                // Trigger remove handlers action
+                this.removeHandlersToolStripMenuItem.PerformClick();
+
+                // Halt flow
+                return;
+            }
+
+
+            /* Add to registry */
+
+            try
+            {
+                // Set new registry modifier
+                RegistryModifier registryModifier = new RegistryModifier(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), "AnyHandlerHook.dll"));
+
+                // Add it
+                registryModifier.AddAnyHandler();
+
+
+
+                // Advise user
+                MessageBox.Show($"AnyHandler has been added to Windows Explorer!{Environment.NewLine}Changes will be picked on next restart.", "Added", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (Exception ex)
+            {
+                // Advise user
+                MessageBox.Show($"{ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
         }
 
         /// <summary>
-        /// Handles the copy program button click.
+        /// Handles the copy browse button click.
         /// </summary>
         /// <param name="sender">Sender object.</param>
         /// <param name="e">Event arguments.</param>
-        private void OnCopyProgramButtonClick(object sender, EventArgs e)
+        private void OnCopyBrowseButtonClick(object sender, EventArgs e)
         {
 
         }
 
         /// <summary>
-        /// Handles the delete program button click.
+        /// Handles the delete browse button click.
         /// </summary>
         /// <param name="sender">Sender object.</param>
         /// <param name="e">Event arguments.</param>
-        private void OnDeleteProgramButtonClick(object sender, EventArgs e)
+        private void OnDeleteBrowseButtonClick(object sender, EventArgs e)
+        {
+
+        }
+
+        /// <summary>
+        /// Handles the move browse button click.
+        /// </summary>
+        /// <param name="sender">Sender object.</param>
+        /// <param name="e">Event arguments.</param>
+        private void OnMoveBrowseButtonClick(object sender, EventArgs e)
+        {
+
+        }
+
+        /// <summary>
+        /// Handles the rename browse button click.
+        /// </summary>
+        /// <param name="sender">Sender object.</param>
+        /// <param name="e">Event arguments.</param>
+        private void OnRenameBrowseButtonClick(object sender, EventArgs e)
         {
 
         }
@@ -84,8 +137,8 @@ namespace AnyHandler
             }
             catch (Exception ex)
             {
-                // Advise user, MessageBoxButtons.OK, MessageBoxIcon.Error);
-                MessageBox.Show($"{ex.Message}", "Registry error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                // Advise user
+                MessageBox.Show($"{ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
