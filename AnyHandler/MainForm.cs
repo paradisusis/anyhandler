@@ -24,9 +24,31 @@ namespace AnyHandler
             this.InitializeComponent();
         }
 
+        /// <summary>
+        /// Handles the add button click.
+        /// </summary>
+        /// <param name="sender">Sender object.</param>
+        /// <param name="e">Event arguments.</param>
         private void OnAddButtonClick(object sender, EventArgs e)
         {
+            /* Add to registry */
 
+            try
+            {
+                // Set new registry modifier
+                RegistryModifier registryModifier = new RegistryModifier(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), "AnyHandlerHook.dll"));
+
+                // Add it
+                registryModifier.AddAnyHandler();
+
+                // Advise user
+                MessageBox.Show($"AnyHandler has been added to Windows Explorer!{Environment.NewLine}Changes will be picked on next restart.", "Added", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (Exception ex)
+            {
+                // Advise user
+                MessageBox.Show($"{ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         /// <summary>
@@ -54,34 +76,6 @@ namespace AnyHandler
                 // Advise user
                 MessageBox.Show($"{ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-        }
-
-        /// <summary>
-        /// Handles the process button click.
-        /// </summary>
-        /// <param name="sender">Sender object.</param>
-        /// <param name="e">Event arguments.</param>
-        private void OnProcessButtonClick(object sender, EventArgs e)
-        {
-            /* Add to registry */
-
-            try
-            {
-                // Set new registry modifier
-                RegistryModifier registryModifier = new RegistryModifier(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), "AnyHandlerHook.dll"));
-
-                // Add it
-                registryModifier.AddAnyHandler();
-
-                // Advise user
-                MessageBox.Show($"AnyHandler has been added to Windows Explorer!{Environment.NewLine}Changes will be picked on next restart.", "Added", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-            catch (Exception ex)
-            {
-                // Advise user
-                MessageBox.Show($"{ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-
         }
 
         /// <summary>
