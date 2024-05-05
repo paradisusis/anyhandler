@@ -24,6 +24,38 @@ namespace AnyHandler
             this.InitializeComponent();
         }
 
+        private void OnAddButtonClick(object sender, EventArgs e)
+        {
+
+        }
+
+        /// <summary>
+        /// Handles the remove button click.
+        /// </summary>
+        /// <param name="sender">Sender object.</param>
+        /// <param name="e">Event arguments.</param>
+        private void OnRemoveButtonClick(object sender, EventArgs e)
+        {
+            /* Remove from registry */
+
+            try
+            {
+                // Set new registry modifier
+                RegistryModifier registryModifier = new RegistryModifier();
+
+                // Remove it
+                registryModifier.RemoveAnyHandler();
+
+                // Advise user
+                MessageBox.Show($"AnyHandler has been removed from Windows Explorer!{Environment.NewLine}Changes will be picked on next restart.", "Removed", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (Exception ex)
+            {
+                // Advise user
+                MessageBox.Show($"{ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
         /// <summary>
         /// Handles the process button click.
         /// </summary>
@@ -31,17 +63,6 @@ namespace AnyHandler
         /// <param name="e">Event arguments.</param>
         private void OnProcessButtonClick(object sender, EventArgs e)
         {
-            // Check if must remove AnyHandler
-            if (!this.copyHandlerCheckBox.Checked && !this.moveHandlerCheckBox.Checked && !this.deleteHandlerCheckBox.Checked && !this.renameHandlerCheckBox.Checked)
-            {
-                // Trigger remove handlers action
-                this.removeHandlersToolStripMenuItem.PerformClick();
-
-                // Halt flow
-                return;
-            }
-
-
             /* Add to registry */
 
             try
@@ -51,8 +72,6 @@ namespace AnyHandler
 
                 // Add it
                 registryModifier.AddAnyHandler();
-
-
 
                 // Advise user
                 MessageBox.Show($"AnyHandler has been added to Windows Explorer!{Environment.NewLine}Changes will be picked on next restart.", "Added", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -113,33 +132,6 @@ namespace AnyHandler
         private void OnNewToolStripMenuItemClick(object sender, EventArgs e)
         {
 
-        }
-
-        /// <summary>
-        /// Handles the remove handlers tool strip menu item click.
-        /// </summary>
-        /// <param name="sender">Sender object.</param>
-        /// <param name="e">Event arguments.</param>
-        private void OnRemoveHandlersToolStripMenuItemClick(object sender, EventArgs e)
-        {
-            /* Remove from registry */
-
-            try
-            {
-                // Set new registry modifier
-                RegistryModifier registryModifier = new RegistryModifier();
-
-                // Remove it
-                registryModifier.RemoveAnyHandler();
-
-                // Advise user
-                MessageBox.Show($"AnyHandler has been removed from Windows Explorer!{Environment.NewLine}Changes will be picked on next restart.", "Removed", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-            catch (Exception ex)
-            {
-                // Advise user
-                MessageBox.Show($"{ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
         }
 
         /// <summary>
