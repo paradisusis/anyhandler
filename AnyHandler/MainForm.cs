@@ -9,12 +9,18 @@ namespace AnyHandler
     using System.IO;
     using System.Reflection;
     using System.Windows.Forms;
+    using Microsoft.Win32;
 
     /// <summary>
     /// Description of MainForm.
     /// </summary>
     public partial class MainForm : Form
     {
+        /// <summary>
+        /// Any handler hook dll path.
+        /// </summary>
+        private string anyHandlerHookDllPath = Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), "AnyHandlerHook.dll");
+
         /// <summary>
         /// Initializes a new instance of the <see cref="T:AnyHandler.MainForm"/> class.
         /// </summary>
@@ -31,12 +37,22 @@ namespace AnyHandler
         /// <param name="e">Event arguments.</param>
         private void OnAddButtonClick(object sender, EventArgs e)
         {
+            // Check if AnyHandlerHook.dll exists 
+            if (!this.AnyHandlerHookDllExists())
+            {
+                // Advise user
+                MessageBox.Show($"AnyHandlerHook.dll is not present.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                // Halt flow
+                return;
+            }
+
             /* Add to registry */
 
             try
             {
                 // Set new registry modifier
-                RegistryModifier registryModifier = new RegistryModifier(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), "AnyHandlerHook.dll"));
+                RegistryModifier registryModifier = new RegistryModifier(this.anyHandlerHookDllPath);
 
                 // Add it
                 registryModifier.AddAnyHandler();
@@ -76,6 +92,16 @@ namespace AnyHandler
                 // Advise user
                 MessageBox.Show($"{ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        /// <summary>
+        /// Checks if AnyHandlerHook.dll exists within current folder.
+        /// </summary>
+        /// <returns><c>true</c> if AnyHandlerHook.dll exists, <c>false</c> otherwise.</returns>
+        private bool AnyHandlerHookDllExists()
+        {
+            // Check if AnyHandlerHook.dll exists and return 
+            return File.Exists(this.anyHandlerHookDllPath);
         }
 
         /// <summary>
