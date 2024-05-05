@@ -105,6 +105,21 @@ namespace AnyHandler
         }
 
         /// <summary>
+        /// Checks if the registry key exists.
+        /// </summary>
+        /// <returns><c>true</c>, if the registry key exists, <c>false</c> otherwise.</returns>
+        /// <param name="baseKey">Base key.</param>
+        /// <param name="subKeyName">Sub key name.</param>
+        private bool KeyExists(RegistryKey baseKey, string subKeyName)
+        {
+            // St the registry key
+            RegistryKey registryKey = baseKey.OpenSubKey(subKeyName);
+
+            // Return true if not null
+            return registryKey != null;
+        }
+
+        /// <summary>
         /// Handles the copy browse button click.
         /// </summary>
         /// <param name="sender">Sender object.</param>
