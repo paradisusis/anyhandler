@@ -120,6 +120,30 @@ namespace AnyHandler
         }
 
         /// <summary>
+        /// Check if AnyHandler is active.
+        /// </summary>
+        /// <returns><c>true</c>, if AnyHandler is active, <c>false</c> otherwise.</returns>
+        private bool IsActive()
+        {
+            // The variable to return
+            bool keyExists = false;
+
+            try
+            {
+                // Set result
+                keyExists = KeyExists(Registry.ClassesRoot, @"Directory\shellex\CopyHookHandlers\AnyHandlerHook");
+            }
+            catch (Exception ex)
+            {
+                // Advise user
+                MessageBox.Show($"{ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+            // Return the result
+            return keyExists;
+        }
+
+        /// <summary>
         /// Handles the copy browse button click.
         /// </summary>
         /// <param name="sender">Sender object.</param>
