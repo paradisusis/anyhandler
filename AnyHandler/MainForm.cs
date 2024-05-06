@@ -38,7 +38,7 @@ namespace AnyHandler
         private void OnAddButtonClick(object sender, EventArgs e)
         {
             // Check if AnyHandlerHook.dll exists 
-            if (!this.AnyHandlerHookDllExists())
+            if (!this.IsDllPresent())
             {
                 // Advise user
                 MessageBox.Show($"AnyHandlerHook.dll is not present.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -95,10 +95,23 @@ namespace AnyHandler
         }
 
         /// <summary>
+        /// Updates the status.
+        /// </summary>
+        private void UpdateStatus()
+        {
+            // Registry
+            this.statusValueToolStripStatusLabel.Text = this.IsActive() ? "Active" : "Inactive";
+
+            // Dll
+            this.dllValueToolStripStatusLabel.Text = this.IsDllPresent() ? "Present" : "Missing";
+        }
+
+        /// <summary>
         /// Checks if AnyHandlerHook.dll exists within current folder.
         /// </summary>
-        /// <returns><c>true</c> if AnyHandlerHook.dll exists, <c>false</c> otherwise.</returns>
-        private bool AnyHandlerHookDllExists()
+        /// <returns><c>true</c> 
+        /// if AnyHandlerHook.dll exists, <c>false</c> otherwise.</returns>
+        private bool IsDllPresent()
         {
             // Check if AnyHandlerHook.dll exists and return 
             return File.Exists(this.anyHandlerHookDllPath);
