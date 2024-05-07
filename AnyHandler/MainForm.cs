@@ -1,12 +1,11 @@
-﻿
-
-namespace AnyHandler
+﻿namespace AnyHandler
 {
     // Directives
     using System;
     using System.Collections.Generic;
     using System.Drawing;
     using System.IO;
+    using System.Linq;
     using System.Reflection;
     using System.Windows.Forms;
     using Microsoft.Win32;
@@ -26,6 +25,19 @@ namespace AnyHandler
         /// </summary>
         public MainForm()
         {
+            // Check for space
+            if (this.anyHandlerHookDllPath.Contains(" "))
+            {
+                // Set "s" in spaces
+                string s = this.anyHandlerHookDllPath.Count(c => c == ' ') > 1 ? "s" : string.Empty;
+
+                // Advise user
+                MessageBox.Show($"The current directory path contains space{s}.{Environment.NewLine}{Environment.NewLine}Please use a path without space{s}.{Environment.NewLine}Example: C:\\AnyHandler", $"Path with space{s}", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+
+                // Halt flow
+                Application.Exit();
+            }
+
             // The InitializeComponent() call is required for Windows Forms designer support.
             this.InitializeComponent();
         }
@@ -289,13 +301,6 @@ namespace AnyHandler
         {
             // Update the status
             this.UpdateStatus(true);
-
-            // Check for space
-            if (this.anyHandlerHookDllPath.Contains(" "))
-            {
-                // Advise user
-                MessageBox.Show($"The current directory path contains spaces.{Environment.NewLine}{Environment.NewLine}Please use a path without spaces.{Environment.NewLine}Example: C:\\AnyHandler", "Path with spaces", MessageBoxButtons.OK, MessageBoxIcon.Stop);
-            }
         }
 
         /// <summary>
