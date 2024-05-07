@@ -79,7 +79,7 @@ namespace AnyHandlerHook
             //#
             MessageBox.Show(message, operation);
 
-            return (uint)CopyHookResult.IDCANCEL;
+            return (uint)CopyHookResult.IDNO;
         }
 
         /// <summary>
