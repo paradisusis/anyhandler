@@ -41,10 +41,10 @@ namespace AnyHandler
             if (!this.IsDllPresent())
             {
                 // Advise user
-                MessageBox.Show($"AnyHandlerHook.dll is not present.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show($"AnyHandlerHook.dll is not present.{Environment.NewLine}{Environment.NewLine}Please copy it and try again.", "Missing dll", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
-                // Halt flow
-                return;
+                // Halt flow and update status
+                goto ExitFunction;
             }
 
             /* Add to registry */
@@ -58,13 +58,18 @@ namespace AnyHandler
                 registryModifier.AddAnyHandler();
 
                 // Advise user
-                MessageBox.Show($"AnyHandler has been added to Windows Explorer!{Environment.NewLine}Changes will be picked on next restart.", "Added", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show($"AnyHandler has been added to Windows Explorer!{Environment.NewLine}{Environment.NewLine}Changes will be picked on next restart.", "Added", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             catch (Exception ex)
             {
                 // Advise user
                 MessageBox.Show($"{ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+
+        ExitFunction:
+
+            // Update the status
+            this.UpdateStatus(false);
         }
 
         /// <summary>
@@ -74,6 +79,16 @@ namespace AnyHandler
         /// <param name="e">Event arguments.</param>
         private void OnRemoveButtonClick(object sender, EventArgs e)
         {
+            // Check if CLSID exists 
+            if (!this.IsActive())
+            {
+                // Advise user
+                MessageBox.Show($"AnyHandler is not active hence no need to remove it.", "Inactive", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+
+                // Halt flow and update status
+                goto ExitFunction;
+            }
+
             /* Remove from registry */
 
             try
@@ -85,25 +100,34 @@ namespace AnyHandler
                 registryModifier.RemoveAnyHandler();
 
                 // Advise user
-                MessageBox.Show($"AnyHandler has been removed from Windows Explorer!{Environment.NewLine}Changes will be picked on next restart.", "Removed", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show($"AnyHandler has been removed from Windows Explorer!{Environment.NewLine}{Environment.NewLine}Changes will be picked on next restart.", "Removed", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             catch (Exception ex)
             {
                 // Advise user
                 MessageBox.Show($"{ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+
+        ExitFunction:
+
+            // Update the status
+            this.UpdateStatus(false);
         }
 
         /// <summary>
         /// Updates the status.
         /// </summary>
-        private void UpdateStatus()
+        /// <param name="checkDll">If set to <c>true</c> check dll.</param>
+        private void UpdateStatus(bool checkDll)
         {
             // Registry
             this.statusValueToolStripStatusLabel.Text = this.IsActive() ? "Active" : "Inactive";
 
             // Dll
-            this.dllValueToolStripStatusLabel.Text = this.IsDllPresent() ? "Present" : "Missing";
+            if (checkDll)
+            {
+                this.dllValueToolStripStatusLabel.Text = this.IsDllPresent() ? "Present" : "Missing";
+            }
         }
 
         /// <summary>
@@ -263,7 +287,15 @@ namespace AnyHandler
         /// <param name="e">Event arguments.</param>
         private void OnMainFormLoad(object sender, EventArgs e)
         {
+            // Update the status
+            this.UpdateStatus(true);
 
+            // Check for space
+            if (this.anyHandlerHookDllPath.Contains(" "))
+            {
+                // Advise user
+                MessageBox.Show($"The current directory path contains spaces.{Environment.NewLine}{Environment.NewLine}Please use a path without spaces.{Environment.NewLine}Example: C:\\AnyHandler", "Path with spaces", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+            }
         }
 
         /// <summary>

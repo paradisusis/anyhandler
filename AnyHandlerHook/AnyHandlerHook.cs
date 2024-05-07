@@ -36,9 +36,50 @@ namespace AnyHandlerHook
         uint dwDestAttribs)
         {
             //#
-            MessageBox.Show($"This: {pszSrcFile}{Environment.NewLine}To: {pszDestFile}", $"{ wFunc }");
+            string operation = string.Empty;
+            string message = string.Empty;
 
-            return (uint)CopyHookResult.IDNO;
+            // Switch by operation
+            switch (wFunc)
+            {
+                // Copy
+                case (uint)CopyHookOperation.FO_COPY:
+
+                    operation = "Copy";
+                    message = $"Source: {pszSrcFile}{Environment.NewLine}Destination: {pszDestFile}";
+
+                    break;
+
+                // Delete
+                case (uint)CopyHookOperation.FO_DELETE:
+
+                    operation = "Delete";
+                    message = $"Source: {pszSrcFile}";
+
+                    break;
+
+                // Move
+                case (uint)CopyHookOperation.FO_MOVE:
+
+                    operation = "Move";
+                    message = $"Source: {pszSrcFile}{Environment.NewLine}Destination: {pszDestFile}";
+
+                    break;
+
+                // Remove
+                case (uint)CopyHookOperation.FO_RENAME:
+
+                    operation = "Rename";
+                    message = $"Source: {pszSrcFile}{Environment.NewLine}Destination: {pszDestFile}";
+
+                    break;
+            }
+
+
+            //#
+            MessageBox.Show(message, operation);
+
+            return (uint)CopyHookResult.IDCANCEL;
         }
 
         /// <summary>
