@@ -204,7 +204,15 @@
         /// <param name="e">Event arguments.</param>
         private void OnDeleteBrowseButtonClick(object sender, EventArgs e)
         {
+            // Reset file name
+            this.openFileDialog.FileName = string.Empty;
 
+            // Show open file dialog
+            if (this.openFileDialog.ShowDialog() == DialogResult.OK && this.openFileDialog.FileName.Length > 0)
+            {
+                // Set the file into text box
+                this.deleteProgramTextBox.Text = this.openFileDialog.FileName;
+            }
         }
 
         /// <summary>
