@@ -222,7 +222,15 @@
         /// <param name="e">Event arguments.</param>
         private void OnMoveBrowseButtonClick(object sender, EventArgs e)
         {
+            // Reset file name
+            this.openFileDialog.FileName = string.Empty;
 
+            // Show open file dialog
+            if (this.openFileDialog.ShowDialog() == DialogResult.OK && this.openFileDialog.FileName.Length > 0)
+            {
+                // Set the file into text box
+                this.moveProgramTextBox.Text = this.openFileDialog.FileName;
+            }
         }
 
         /// <summary>
