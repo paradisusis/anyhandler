@@ -25,19 +25,6 @@
         /// </summary>
         public MainForm()
         {
-            // Check for space
-            if (this.anyHandlerHookDllPath.Contains(" "))
-            {
-                // Set "s" in spaces
-                string s = this.anyHandlerHookDllPath.Count(c => c == ' ') > 1 ? "s" : string.Empty;
-
-                // Advise user
-                MessageBox.Show($"The current directory path contains space{s}.{Environment.NewLine}{Environment.NewLine}Please use a path without space{s}.{Environment.NewLine}Example: C:\\AnyHandler", $"Path with space{s}", MessageBoxButtons.OK, MessageBoxIcon.Stop);
-
-                // Halt flow
-                Application.Exit();
-            }
-
             // The InitializeComponent() call is required for Windows Forms designer support.
             this.InitializeComponent();
         }
@@ -199,7 +186,15 @@
         /// <param name="e">Event arguments.</param>
         private void OnCopyBrowseButtonClick(object sender, EventArgs e)
         {
+            // Reset file name
+            this.openFileDialog.FileName = string.Empty;
 
+            // Show open file dialog
+            if (this.openFileDialog.ShowDialog() == DialogResult.OK && this.openFileDialog.FileName.Length > 0)
+            {
+                // Set the file into text box
+                this.copyProgramTextBox.Text = this.openFileDialog.FileName;
+            }
         }
 
         /// <summary>
