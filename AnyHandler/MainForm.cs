@@ -274,7 +274,7 @@
                 if (this.renameArgumentsTextBox.Text.Length == 0)
                 {
                     // Add {dir}
-                    this.renameArgumentsTextBox.Text = "{dir}";
+                    this.renameArgumentsTextBox.Text = $"{(this.addquotesToolStripMenuItem.Checked ? "\"" : string.Empty)}{{dir}}{(this.addquotesToolStripMenuItem.Checked ? "\"" : string.Empty)}";
                 }
             }
         }
