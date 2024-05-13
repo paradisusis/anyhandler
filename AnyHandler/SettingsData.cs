@@ -108,6 +108,13 @@ namespace ParadisusIs
         {
             try
             {
+                // Check there's a settings data path to work with
+                if (this.SettingsDataPath == string.Empty)
+                {
+                    // Halt flow and advise
+                    throw new Exception("Empty settings data path.");
+                }
+
                 // Use stream writer
                 using (StreamWriter streamWriter = new StreamWriter(this.SettingsDataPath, false))
                 {

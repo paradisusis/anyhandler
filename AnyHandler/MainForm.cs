@@ -384,6 +384,32 @@
         }
 
         /// <summary>
+        /// Saves the settings.
+        /// </summary>
+        private void SaveSettings()
+        {
+            /* Save settings */
+
+            // Always on top
+            this.settingsData.AlwaysOnTop = this.alwaysOnTopToolStripMenuItem.Checked;
+
+            // Add quotes
+            this.settingsData.AddQuotes = this.addquotesToolStripMenuItem.Checked;
+
+            // Dictionary for path and arguments
+            this.settingsData.PathArgumentsDictionary = new Dictionary<string, KeyValuePair<string, string>>()
+            {
+                ["copy"] = new KeyValuePair<string, string>(this.copyProgramTextBox.Text, this.copyArgumentsTextBox.Text),
+                ["move"] = new KeyValuePair<string, string>(this.moveProgramTextBox.Text, this.moveArgumentsTextBox.Text),
+                ["delete"] = new KeyValuePair<string, string>(this.deleteProgramTextBox.Text, this.deleteArgumentsTextBox.Text),
+                ["rename"] = new KeyValuePair<string, string>(this.renameProgramTextBox.Text, this.renameArgumentsTextBox.Text),
+            };
+
+            // Save settings data to disk
+            this.settingsData.SaveSettingsFile();
+        }
+
+        /// <summary>
         /// Handles the exit tool strip menu item click.
         /// </summary>
         /// <param name="sender">Sender object.</param>
