@@ -380,13 +380,22 @@
         /// <param name="e">Event arguments.</param>
         private void OnMainFormFormClosing(object sender, FormClosingEventArgs e)
         {
+            // Save current settings as per the GUI
+            this.SaveGuiSettings();
+        }
+
+        /// <summary>
+        /// Sets the GUI settings.
+        /// </summary>
+        private void SetGuiSettings()
+        {
 
         }
 
         /// <summary>
         /// Saves the settings.
         /// </summary>
-        private void SaveSettings()
+        private void SaveGuiSettings()
         {
             /* Save settings */
 
