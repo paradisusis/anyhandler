@@ -41,7 +41,7 @@
 
             /* Settings data */
 
-            // Set settings data variable
+            // Set settings data
             this.settingsData = new SettingsData(this.settingsDataPath, !File.Exists(this.settingsDataPath));
         }
 
@@ -389,7 +389,21 @@
         /// </summary>
         private void SetGuiSettings()
         {
+            // Always on top
+            this.alwaysOnTopToolStripMenuItem.Checked = this.settingsData.AlwaysOnTop;
 
+            // Add quotes
+            this.addquotesToolStripMenuItem.Checked = this.settingsData.AddQuotes;
+
+            // Operations' path and arguments
+            this.copyProgramTextBox.Text = this.settingsData.PathArgumentsDictionary["copy"].Key;
+            this.copyArgumentsTextBox.Text = this.settingsData.PathArgumentsDictionary["copy"].Value;
+            this.moveProgramTextBox.Text = this.settingsData.PathArgumentsDictionary["move"].Key;
+            this.moveArgumentsTextBox.Text = this.settingsData.PathArgumentsDictionary["move"].Value;
+            this.deleteProgramTextBox.Text = this.settingsData.PathArgumentsDictionary["delete"].Key;
+            this.deleteArgumentsTextBox.Text = this.settingsData.PathArgumentsDictionary["delete"].Value;
+            this.renameProgramTextBox.Text = this.settingsData.PathArgumentsDictionary["rename"].Key;
+            this.renameArgumentsTextBox.Text = this.settingsData.PathArgumentsDictionary["rename"].Value;
         }
 
         /// <summary>
@@ -397,8 +411,6 @@
         /// </summary>
         private void SaveGuiSettings()
         {
-            /* Save settings */
-
             // Always on top
             this.settingsData.AlwaysOnTop = this.alwaysOnTopToolStripMenuItem.Checked;
 
