@@ -249,7 +249,7 @@
                 if (this.moveArgumentsTextBox.Text.Length == 0)
                 {
                     // Add {dir}
-                    this.moveArgumentsTextBox.Text = "{dir}";
+                    this.moveArgumentsTextBox.Text = $"{(this.addquotesToolStripMenuItem.Checked ? "\"" : string.Empty)}{{dir}}{(this.addquotesToolStripMenuItem.Checked ? "\"" : string.Empty)}";
                 }
             }
         }
