@@ -194,6 +194,13 @@
             {
                 // Set the file into text box
                 this.copyProgramTextBox.Text = this.openFileDialog.FileName;
+
+                // Check for no arguments
+                if (this.copyArgumentsTextBox.Text.Length == 0)
+                {
+                    // Add {dir}
+                    this.copyArgumentsTextBox.Text = $"{(this.addquotesToolStripMenuItem.Checked ? "\"" : string.Empty)}{{dir}}{(this.addquotesToolStripMenuItem.Checked ? "\"" : string.Empty)}";
+                }
             }
         }
 
@@ -212,6 +219,13 @@
             {
                 // Set the file into text box
                 this.deleteProgramTextBox.Text = this.openFileDialog.FileName;
+
+                // Check for no arguments
+                if (this.deleteArgumentsTextBox.Text.Length == 0)
+                {
+                    // Add {dir}
+                    this.deleteArgumentsTextBox.Text = "{dir}";
+                }
             }
         }
 
@@ -230,6 +244,13 @@
             {
                 // Set the file into text box
                 this.moveProgramTextBox.Text = this.openFileDialog.FileName;
+
+                // Check for no arguments
+                if (this.moveArgumentsTextBox.Text.Length == 0)
+                {
+                    // Add {dir}
+                    this.moveArgumentsTextBox.Text = "{dir}";
+                }
             }
         }
 
@@ -248,6 +269,13 @@
             {
                 // Set the file into text box
                 this.renameProgramTextBox.Text = this.openFileDialog.FileName;
+
+                // Check for no arguments
+                if (this.renameArgumentsTextBox.Text.Length == 0)
+                {
+                    // Add {dir}
+                    this.renameArgumentsTextBox.Text = "{dir}";
+                }
             }
         }
 
