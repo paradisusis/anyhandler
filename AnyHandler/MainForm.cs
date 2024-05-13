@@ -9,6 +9,7 @@
     using System.Reflection;
     using System.Windows.Forms;
     using Microsoft.Win32;
+    using ParadisusIs;
 
     /// <summary>
     /// Description of MainForm.
@@ -21,12 +22,27 @@
         private string anyHandlerHookDllPath = Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), "AnyHandlerHook.dll");
 
         /// <summary>
+        /// The settings data.
+        /// </summary>
+        private SettingsData settingsData = null;
+
+        /// <summary>
+        /// The settings data path.
+        /// </summary>
+        private string settingsDataPath = $"{Application.ProductName}-SettingsData.txt";
+
+        /// <summary>
         /// Initializes a new instance of the <see cref="T:AnyHandler.MainForm"/> class.
         /// </summary>
         public MainForm()
         {
             // The InitializeComponent() call is required for Windows Forms designer support.
             this.InitializeComponent();
+
+            /* Settings data */
+
+            // Set settings data variable
+            this.settingsData = new SettingsData(this.settingsDataPath, !File.Exists(this.settingsDataPath));
         }
 
         /// <summary>

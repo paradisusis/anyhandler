@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
 using System.IO;
@@ -19,6 +20,24 @@ namespace ParadisusIs
         /// </summary>
         /// <value>The settings data path.</value>
         public string SettingsDataPath { get; set; }
+
+        /// <summary>
+        /// Gets or sets a value indicating whether this <see cref="T:ParadisusIs.SettingsData"/> always on top.
+        /// </summary>
+        /// <value><c>true</c> if always on top; otherwise, <c>false</c>.</value>
+        public bool AlwaysOnTop { get; set; } = false;
+
+        /// <summary>
+        /// Gets or sets a value indicating whether this <see cref="T:ParadisusIs.SettingsData"/> add quotes.
+        /// </summary>
+        /// <value><c>true</c> if add quotes; otherwise, <c>false</c>.</value>
+        public bool AddQuotes { get; set; } = true;
+
+        /// <summary>
+        /// Gets or sets the path arguments dictionary.
+        /// </summary>
+        /// <value>The path arguments dictionary.</value>
+        public Dictionary<string, KeyValuePair<string, string>> PathArgumentsDictionary { get; set; }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="T:PublicDomain.SettingsData"/> class.
