@@ -35,7 +35,7 @@ namespace AnyHandler
         /// <summary>
         /// The settings data path.
         /// </summary>
-        private string settingsDataPath = $"{Application.ProductName}-SettingsData.txt";
+        private string settingsDataPath = "AnyHandler-SettingsData.txt";
 
         /// <summary>
         /// Gets or sets the associated icon.

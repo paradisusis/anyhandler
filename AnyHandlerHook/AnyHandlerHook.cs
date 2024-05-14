@@ -3,14 +3,22 @@
  */
 
 using System;
+using System.Diagnostics;
+using System.IO;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
+using ParadisusIs;
 
 namespace AnyHandlerHook
 {
     [Guid("5f7bfea1-b869-48dc-90a9-23ef4015857c"), ComVisible(true)]
     public class AnyHandlerHook : ICopyHook
     {
+        /// <summary>
+        /// The settings data path.
+        /// </summary>
+        private string settingsDataPath = "AnyHandler-SettingsData.txt";
+
         /// <summary>
         /// Initializes a new instance of the <see cref="T:AnyHandlerHook.AnyHandlerHook"/> class.
         /// </summary>
@@ -35,50 +43,112 @@ namespace AnyHandlerHook
         [MarshalAs(UnmanagedType.LPWStr)] string pszDestFile,
         uint dwDestAttribs)
         {
-            //#
+            // TODO Declare variables [Can streamline]
             string operation = string.Empty;
             string message = string.Empty;
+            string programPath = string.Empty;
+            string programArguments = string.Empty;
 
-            // Switch by operation
-            switch (wFunc)
+            try
             {
-                // Copy
-                case (uint)CopyHookOperation.FO_COPY:
+                // Check for settings data
+                if (!File.Exists(this.settingsDataPath))
+                {
+                    // Advise & halt flow
+                    throw new Exception($"{this.settingsDataPath} does not exist.");
+                }
 
-                    operation = "Copy";
-                    message = $"Source: {pszSrcFile}{Environment.NewLine}Destination: {pszDestFile}";
+                // Set settings data
+                var settingsData = new SettingsData(this.settingsDataPath, false);
 
-                    break;
+                // Switch by operation
+                switch (wFunc)
+                {
+                    // Copy
+                    case (uint)CopyHookOperation.FO_COPY:
 
-                // Delete
-                case (uint)CopyHookOperation.FO_DELETE:
+                        operation = "Copy";
+                        message = $"Source: {pszSrcFile}{Environment.NewLine}Destination: {pszDestFile}";
+                        programPath = settingsData.CopyProgramPath;
+                        programArguments = settingsData.CopyProgramArguments;
 
-                    operation = "Delete";
-                    message = $"Source: {pszSrcFile}";
+                        break;
 
-                    break;
+                    // Delete
+                    case (uint)CopyHookOperation.FO_DELETE:
 
-                // Move
-                case (uint)CopyHookOperation.FO_MOVE:
+                        operation = "Delete";
+                        message = $"Source: {pszSrcFile}";
+                        programPath = settingsData.DeleteProgramPath;
+                        programArguments = settingsData.DeleteProgramArguments;
 
-                    operation = "Move";
-                    message = $"Source: {pszSrcFile}{Environment.NewLine}Destination: {pszDestFile}";
+                        break;
 
-                    break;
+                    // Move
+                    case (uint)CopyHookOperation.FO_MOVE:
 
-                // Remove
-                case (uint)CopyHookOperation.FO_RENAME:
+                        operation = "Move";
+                        message = $"Source: {pszSrcFile}{Environment.NewLine}Destination: {pszDestFile}";
+                        programPath = settingsData.MoveProgramPath;
+                        programArguments = settingsData.MoveProgramArguments;
 
-                    operation = "Rename";
-                    message = $"Source: {pszSrcFile}{Environment.NewLine}Destination: {pszDestFile}";
+                        break;
 
-                    break;
+                    // Remove
+                    case (uint)CopyHookOperation.FO_RENAME:
+
+                        operation = "Rename";
+                        message = $"Source: {pszSrcFile}{Environment.NewLine}Destination: {pszDestFile}";
+                        programPath = settingsData.RenameProgramPath;
+                        programArguments = settingsData.RenameProgramArguments;
+
+                        break;
+                }
+
+                // Check for a program in path
+                if (programPath.Length == 0)
+                {
+                    // Halt flow & advise
+                    throw new Exception("No program path.");
+                }
+
+                // Check for a valid program in path
+                if (!File.Exists(programPath))
+                {
+                    // Halt flow & advise
+                    throw new Exception("Invalid program path.");
+                }
+
+                // Run the program with arguments
+                using (var process = new Process())
+                {
+                    // Set file name to program path
+                    process.StartInfo.FileName = programPath;
+
+                    // Check for arguments
+                    if (programArguments.Length > 0)
+                    {
+                        // Replace source
+                        programArguments = programArguments.Replace("{src}", pszSrcFile);
+
+                        // Replace destination
+                        programArguments = programArguments.Replace("{dst}", pszDestFile);
+
+                        // Set arguments
+                        process.StartInfo.Arguments = programArguments;
+                    }
+
+                    // Start the process
+                    process.Start();
+                }
+            }
+            catch (Exception ex)
+            {
+                // Log error to file
+                File.AppendAllText("AnyHandler-ErrorLog.txt", $"{Environment.NewLine}{DateTime.Now.ToString()}: {ex.Message}{Environment.NewLine}Operation: {(operation.Length > 0 ? operation : wFunc.ToString())}{Environment.NewLine}Source: {pszSrcFile}{Environment.NewLine}Destination: {pszDestFile}");
             }
 
-
-            //#
-            MessageBox.Show(message, operation);
-
+            // Return negative to suppress Windows Explorer's dialog
             return (uint)CopyHookResult.IDNO;
         }
 
