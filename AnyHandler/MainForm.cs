@@ -302,7 +302,26 @@
         /// <param name="e">Event arguments.</param>
         private void OnNewToolStripMenuItemClick(object sender, EventArgs e)
         {
+            // Temp vars
+            bool alwaysOnTop = this.alwaysOnTopToolStripMenuItem.Checked;
+            bool addQuotes = this.addquotesToolStripMenuItem.Checked;
 
+            /* Settings */
+
+            // Remove settings data file
+            File.Delete(this.settingsDataPath);
+
+            // Set settings data
+            this.settingsData = new SettingsData(this.settingsDataPath, true);
+
+            /* GUI */
+
+            // Patch by temp vars
+            this.settingsData.AlwaysOnTop = alwaysOnTop;
+            this.settingsData.AddQuotes = addQuotes;
+
+            // Set GUI as per the reset settings
+            this.SetGuiSettings();
         }
 
         /// <summary>
@@ -394,6 +413,7 @@
         {
             // Always on top
             this.alwaysOnTopToolStripMenuItem.Checked = this.settingsData.AlwaysOnTop;
+            this.TopMost = this.settingsData.AlwaysOnTop;
 
             // Add quotes
             this.addquotesToolStripMenuItem.Checked = this.settingsData.AddQuotes;
