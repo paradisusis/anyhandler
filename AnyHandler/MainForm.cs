@@ -3,6 +3,7 @@
     // Directives
     using System;
     using System.Collections.Generic;
+    using System.Diagnostics;
     using System.Drawing;
     using System.IO;
     using System.Linq;
@@ -368,7 +369,8 @@
         /// <param name="e">Event arguments.</param>
         private void OnSourceCodeGithubcomToolStripMenuItemClick(object sender, EventArgs e)
         {
-
+            // Open GitHub repository
+            Process.Start("https://github.com/paradisusis/anyhandler");
         }
 
         /// <summary>
