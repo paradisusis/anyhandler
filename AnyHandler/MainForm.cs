@@ -369,6 +369,9 @@
         /// <param name="e">Event arguments.</param>
         private void OnMainFormLoad(object sender, EventArgs e)
         {
+            // Set the loaded settings onto the GUI
+            this.SetGuiSettings();
+
             // Update the status
             this.UpdateStatus(true);
         }
@@ -396,14 +399,14 @@
             this.addquotesToolStripMenuItem.Checked = this.settingsData.AddQuotes;
 
             // Operations' path and arguments
-            this.copyProgramTextBox.Text = this.settingsData.PathArgumentsDictionary["copy"].Key;
-            this.copyArgumentsTextBox.Text = this.settingsData.PathArgumentsDictionary["copy"].Value;
-            this.moveProgramTextBox.Text = this.settingsData.PathArgumentsDictionary["move"].Key;
-            this.moveArgumentsTextBox.Text = this.settingsData.PathArgumentsDictionary["move"].Value;
-            this.deleteProgramTextBox.Text = this.settingsData.PathArgumentsDictionary["delete"].Key;
-            this.deleteArgumentsTextBox.Text = this.settingsData.PathArgumentsDictionary["delete"].Value;
-            this.renameProgramTextBox.Text = this.settingsData.PathArgumentsDictionary["rename"].Key;
-            this.renameArgumentsTextBox.Text = this.settingsData.PathArgumentsDictionary["rename"].Value;
+            this.copyProgramTextBox.Text = this.settingsData.CopyProgramPath;
+            this.copyArgumentsTextBox.Text = this.settingsData.CopyProgramArguments;
+            this.moveProgramTextBox.Text = this.settingsData.MoveProgramPath;
+            this.moveArgumentsTextBox.Text = this.settingsData.MoveProgramArguments;
+            this.deleteProgramTextBox.Text = this.settingsData.DeleteProgramPath;
+            this.deleteArgumentsTextBox.Text = this.settingsData.DeleteProgramArguments;
+            this.renameProgramTextBox.Text = this.settingsData.RenameProgramPath;
+            this.renameArgumentsTextBox.Text = this.settingsData.RenameProgramArguments;
         }
 
         /// <summary>
@@ -417,14 +420,16 @@
             // Add quotes
             this.settingsData.AddQuotes = this.addquotesToolStripMenuItem.Checked;
 
-            // Dictionary for path and arguments
-            this.settingsData.PathArgumentsDictionary = new Dictionary<string, KeyValuePair<string, string>>()
-            {
-                ["copy"] = new KeyValuePair<string, string>(this.copyProgramTextBox.Text, this.copyArgumentsTextBox.Text),
-                ["move"] = new KeyValuePair<string, string>(this.moveProgramTextBox.Text, this.moveArgumentsTextBox.Text),
-                ["delete"] = new KeyValuePair<string, string>(this.deleteProgramTextBox.Text, this.deleteArgumentsTextBox.Text),
-                ["rename"] = new KeyValuePair<string, string>(this.renameProgramTextBox.Text, this.renameArgumentsTextBox.Text),
-            };
+            // Operations' path and arguments
+            this.settingsData.CopyProgramPath = this.copyProgramTextBox.Text;
+            this.settingsData.CopyProgramArguments = this.copyArgumentsTextBox.Text;
+            this.settingsData.MoveProgramPath = this.moveProgramTextBox.Text;
+            this.settingsData.MoveProgramArguments = this.moveArgumentsTextBox.Text;
+            this.settingsData.DeleteProgramPath = this.deleteProgramTextBox.Text;
+            this.settingsData.DeleteProgramArguments = this.deleteArgumentsTextBox.Text;
+            this.settingsData.RenameProgramPath = this.renameProgramTextBox.Text;
+            this.settingsData.RenameProgramArguments = this.renameArgumentsTextBox.Text;
+
 
             // Save settings data to disk
             this.settingsData.SaveSettingsFile();

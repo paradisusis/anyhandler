@@ -34,10 +34,52 @@ namespace ParadisusIs
         public bool AddQuotes { get; set; } = true;
 
         /// <summary>
-        /// Gets or sets the path arguments dictionary.
+        /// Gets or sets the copy program path.
         /// </summary>
-        /// <value>The path arguments dictionary.</value>
-        public Dictionary<string, KeyValuePair<string, string>> PathArgumentsDictionary { get; set; }
+        /// <value>The copy program path.</value>
+        public string CopyProgramPath { get; set; }
+
+        /// <summary>
+        /// Gets or sets the copy program arguments.
+        /// </summary>
+        /// <value>The copy program arguments.</value>
+        public string CopyProgramArguments { get; set; }
+
+        /// <summary>
+        /// Gets or sets the move program path.
+        /// </summary>
+        /// <value>The move program path.</value>
+        public string MoveProgramPath { get; set; }
+
+        /// <summary>
+        /// Gets or sets the move program arguments.
+        /// </summary>
+        /// <value>The move program arguments.</value>
+        public string MoveProgramArguments { get; set; }
+
+        /// <summary>
+        /// Gets or sets the delete program path.
+        /// </summary>
+        /// <value>The delete program path.</value>
+        public string DeleteProgramPath { get; set; }
+
+        /// <summary>
+        /// Gets or sets the delete program arguments.
+        /// </summary>
+        /// <value>The delete program arguments.</value>
+        public string DeleteProgramArguments { get; set; }
+
+        /// <summary>
+        /// Gets or sets the rename program path.
+        /// </summary>
+        /// <value>The rename program path.</value>
+        public string RenameProgramPath { get; set; }
+
+        /// <summary>
+        /// Gets or sets the rename program arguments.
+        /// </summary>
+        /// <value>The rename program arguments.</value>
+        public string RenameProgramArguments { get; set; }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="T:PublicDomain.SettingsData"/> class.
