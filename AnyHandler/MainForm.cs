@@ -231,8 +231,8 @@ namespace AnyHandler
                 // Check for no arguments
                 if (this.copyArgumentsTextBox.Text.Length == 0)
                 {
-                    // Add {dir}
-                    this.copyArgumentsTextBox.Text = $"{(this.addquotesToolStripMenuItem.Checked ? "\"" : string.Empty)}{{dir}}{(this.addquotesToolStripMenuItem.Checked ? "\"" : string.Empty)}";
+                    // Add {src} and {dst}
+                    this.copyArgumentsTextBox.Text = $"{(this.addquotesToolStripMenuItem.Checked ? "\"" : string.Empty)}{{src}}{(this.addquotesToolStripMenuItem.Checked ? "\"" : string.Empty)} {(this.addquotesToolStripMenuItem.Checked ? "\"" : string.Empty)}{{dst}}{(this.addquotesToolStripMenuItem.Checked ? "\"" : string.Empty)}";
                 }
             }
         }
