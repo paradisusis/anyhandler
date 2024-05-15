@@ -256,7 +256,7 @@ namespace AnyHandler
                 // Check for no arguments
                 if (this.deleteArgumentsTextBox.Text.Length == 0)
                 {
-                    // Add {dir}
+                    // Add {src} and {dst}
                     this.deleteArgumentsTextBox.Text = $"{(this.addquotesToolStripMenuItem.Checked ? "\"" : string.Empty)}{{src}}{(this.addquotesToolStripMenuItem.Checked ? "\"" : string.Empty)}";
                 }
             }
@@ -281,7 +281,7 @@ namespace AnyHandler
                 // Check for no arguments
                 if (this.moveArgumentsTextBox.Text.Length == 0)
                 {
-                    // Add {dir}
+                    // Add {src}
                     this.moveArgumentsTextBox.Text = $"{(this.addquotesToolStripMenuItem.Checked ? "\"" : string.Empty)}{{src}}{(this.addquotesToolStripMenuItem.Checked ? "\"" : string.Empty)} {(this.addquotesToolStripMenuItem.Checked ? "\"" : string.Empty)}{{dst}}{(this.addquotesToolStripMenuItem.Checked ? "\"" : string.Empty)}";
                 }
             }
@@ -306,7 +306,7 @@ namespace AnyHandler
                 // Check for no arguments
                 if (this.renameArgumentsTextBox.Text.Length == 0)
                 {
-                    // Add {dir}
+                    // Add {src} and {dst}
                     this.renameArgumentsTextBox.Text = $"{(this.addquotesToolStripMenuItem.Checked ? "\"" : string.Empty)}{{src}}{(this.addquotesToolStripMenuItem.Checked ? "\"" : string.Empty)} {(this.addquotesToolStripMenuItem.Checked ? "\"" : string.Empty)}{{dst}}{(this.addquotesToolStripMenuItem.Checked ? "\"" : string.Empty)}";
                 }
             }

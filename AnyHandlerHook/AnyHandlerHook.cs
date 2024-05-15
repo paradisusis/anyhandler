@@ -17,7 +17,7 @@ namespace AnyHandlerHook
         /// <summary>
         /// The settings data path.
         /// </summary>
-        private string settingsDataPath = "AnyHandler-SettingsData.txt";
+        private string settingsDataPath = Path.Combine(Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location), "AnyHandler-SettingsData.txt");
 
         /// <summary>
         /// Initializes a new instance of the <see cref="T:AnyHandlerHook.AnyHandlerHook"/> class.
@@ -48,6 +48,7 @@ namespace AnyHandlerHook
             string message = string.Empty;
             string programPath = string.Empty;
             string programArguments = string.Empty;
+            bool writeErrorLog = true; // Toggle if must skip
 
             try
             {
@@ -108,6 +109,9 @@ namespace AnyHandlerHook
                 // Check for a program in path
                 if (programPath.Length == 0)
                 {
+                    // Not handled, skip logging the error
+                    writeErrorLog = false;
+
                     // Halt flow & advise
                     throw new Exception("No program path.");
                 }
@@ -144,12 +148,16 @@ namespace AnyHandlerHook
             }
             catch (Exception ex)
             {
-                // Log error to file
-                File.AppendAllText("AnyHandler-ErrorLog.txt", $"{Environment.NewLine}{DateTime.Now.ToString()}: {ex.Message}{Environment.NewLine}Operation: {(operation.Length > 0 ? operation : wFunc.ToString())}{Environment.NewLine}Source: {pszSrcFile}{Environment.NewLine}Destination: {pszDestFile}");
+                // Check if must write error to file
+                if (writeErrorLog)
+                {
+                    // TODO Log error to file [Use variable for DLL location, consider  expanding wFunc to operation]
+                    File.AppendAllText(Path.Combine(Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location), "AnyHandler-ErrorLog.txt"), $"{Environment.NewLine}{Environment.NewLine}{DateTime.Now.ToString()}: {ex.Message}{Environment.NewLine}Operation: {(operation.Length > 0 ? operation : wFunc.ToString())}{Environment.NewLine}Source: {pszSrcFile}{Environment.NewLine}Destination: {pszDestFile}");
+                }
             }
 
-            // Return negative to suppress Windows Explorer's dialog
-            return (uint)CopyHookResult.IDNO;
+            // Return positive on no program path OR negative to suppress Windows Explorer's dialog
+            return programPath.Length > 0 ? (uint)CopyHookResult.IDNO : (uint)CopyHookResult.IDYES;
         }
 
         /// <summary>
