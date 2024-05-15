@@ -89,6 +89,9 @@ namespace AnyHandler
                 // Add it
                 registryModifier.AddAnyHandler();
 
+                // Save current settings as per the GUI
+                this.SaveGuiSettings();
+
                 // Advise user
                 MessageBox.Show($"AnyHandler has been added to Windows Explorer!{Environment.NewLine}{Environment.NewLine}Changes will be picked on next restart.", "Added", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
