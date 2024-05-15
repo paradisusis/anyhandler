@@ -257,7 +257,7 @@ namespace AnyHandler
                 if (this.deleteArgumentsTextBox.Text.Length == 0)
                 {
                     // Add {dir}
-                    this.deleteArgumentsTextBox.Text = $"{(this.addquotesToolStripMenuItem.Checked ? "\"" : string.Empty)}{{dir}}{(this.addquotesToolStripMenuItem.Checked ? "\"" : string.Empty)}";
+                    this.deleteArgumentsTextBox.Text = $"{(this.addquotesToolStripMenuItem.Checked ? "\"" : string.Empty)}{{src}}{(this.addquotesToolStripMenuItem.Checked ? "\"" : string.Empty)}";
                 }
             }
         }
