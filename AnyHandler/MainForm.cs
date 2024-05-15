@@ -282,7 +282,7 @@ namespace AnyHandler
                 if (this.moveArgumentsTextBox.Text.Length == 0)
                 {
                     // Add {dir}
-                    this.moveArgumentsTextBox.Text = $"{(this.addquotesToolStripMenuItem.Checked ? "\"" : string.Empty)}{{dir}}{(this.addquotesToolStripMenuItem.Checked ? "\"" : string.Empty)}";
+                    this.moveArgumentsTextBox.Text = $"{(this.addquotesToolStripMenuItem.Checked ? "\"" : string.Empty)}{{src}}{(this.addquotesToolStripMenuItem.Checked ? "\"" : string.Empty)} {(this.addquotesToolStripMenuItem.Checked ? "\"" : string.Empty)}{{dst}}{(this.addquotesToolStripMenuItem.Checked ? "\"" : string.Empty)}";
                 }
             }
         }
