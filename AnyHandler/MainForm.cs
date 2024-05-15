@@ -426,7 +426,7 @@ namespace AnyHandler
             var aboutForm = new AboutForm(
                 $"About {programTitle}",
                 $"{programTitle} {version.Major}.{version.Minor}.{version.Build}",
-                $"Made for: {Environment.NewLine}DonationCoder.com{Environment.NewLine}Day #135, Week #20 @ May 14, 2024",
+                $"Made for: {Environment.NewLine}DonationCoder.com{Environment.NewLine}Day #136, Week #20 @ May 15, 2024",
                 licenseText,
                 this.Icon.ToBitmap())
             {
