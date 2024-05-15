@@ -307,7 +307,7 @@ namespace AnyHandler
                 if (this.renameArgumentsTextBox.Text.Length == 0)
                 {
                     // Add {dir}
-                    this.renameArgumentsTextBox.Text = $"{(this.addquotesToolStripMenuItem.Checked ? "\"" : string.Empty)}{{dir}}{(this.addquotesToolStripMenuItem.Checked ? "\"" : string.Empty)}";
+                    this.renameArgumentsTextBox.Text = $"{(this.addquotesToolStripMenuItem.Checked ? "\"" : string.Empty)}{{src}}{(this.addquotesToolStripMenuItem.Checked ? "\"" : string.Empty)} {(this.addquotesToolStripMenuItem.Checked ? "\"" : string.Empty)}{{dst}}{(this.addquotesToolStripMenuItem.Checked ? "\"" : string.Empty)}";
                 }
             }
         }
