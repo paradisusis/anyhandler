@@ -458,7 +458,7 @@ namespace AnyHandler
             ;
 
             // Prepend sponsors
-            licenseText = $"RELEASE SUPPORTERS:{Environment.NewLine}{Environment.NewLine}* Jesse Reichler (mouser){Environment.NewLine}* ibay770{Environment.NewLine}=========={Environment.NewLine}{Environment.NewLine}" + licenseText;
+            licenseText = $"RELEASE SUPPORTERS:{Environment.NewLine}{Environment.NewLine}* Jesse Reichler (mouser){Environment.NewLine}* ibay770{Environment.NewLine}* Tsang You Jun{Environment.NewLine}=========={Environment.NewLine}{Environment.NewLine}" + licenseText;
 
             // Set title
             string programTitle = typeof(MainForm).GetTypeInfo().Assembly.GetCustomAttribute<AssemblyTitleAttribute>().Title;
@@ -470,7 +470,7 @@ namespace AnyHandler
             var aboutForm = new AboutForm(
                 $"About {programTitle}",
                 $"{programTitle} {version.Major}.{version.Minor}.{version.Build}",
-                $"Made for: {Environment.NewLine}DonationCoder.com{Environment.NewLine}Day #136, Week #20 @ May 15, 2024",
+                $"Made for: ibay770{Environment.NewLine}DonationCoder.com{Environment.NewLine}",
                 licenseText,
                 this.Icon.ToBitmap())
             {
