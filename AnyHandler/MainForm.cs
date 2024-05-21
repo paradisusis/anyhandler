@@ -79,6 +79,29 @@ namespace AnyHandler
                 goto ExitFunction;
             }
 
+            /* Update settings */
+
+            // Check if it's actve
+            if (this.IsActive())
+            {
+                try
+                {
+                    // Update settings data
+                    this.SaveGuiSettings();
+
+                    // Advise user
+                    MessageBox.Show($"Programs and arguments updated!", "Settings", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                catch (Exception ex)
+                {
+                    // Advise user
+                    MessageBox.Show($"{ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+
+                // Halt flow and update status
+                goto ExitFunction;
+            }
+
             /* Add to registry */
 
             try
@@ -155,8 +178,29 @@ namespace AnyHandler
         /// <param name="checkDll">If set to <c>true</c> check dll.</param>
         private void UpdateStatus(bool checkDll)
         {
+            // Vars
+            string statusValueToolStripStatusLabelText = string.Empty;
+            string addButtonText = string.Empty;
+
             // Registry
-            this.statusValueToolStripStatusLabel.Text = this.IsActive() ? "Active" : "Inactive";
+            if (this.IsActive())
+            {
+                // Active
+                statusValueToolStripStatusLabelText = "Active";
+                addButtonText = "&Update";
+            }
+            else
+            {
+                // Inactive
+                statusValueToolStripStatusLabelText = "Inactive";
+                addButtonText = "&Add to Explorer";
+            }
+
+            // Update label
+            this.statusValueToolStripStatusLabel.Text = statusValueToolStripStatusLabelText;
+
+            // Update button
+            this.addButton.Text = addButtonText;
 
             // Dll
             if (checkDll)
