@@ -45,6 +45,12 @@ namespace ParadisusIs
         public string CopyProgramArguments { get; set; }
 
         /// <summary>
+        /// Gets or sets a value indicating whether this <see cref="T:ParadisusIs.SettingsData"/> copy program hide.
+        /// </summary>
+        /// <value><c>true</c> if copy program hide; otherwise, <c>false</c>.</value>
+        public bool CopyProgramHide { get; set; } = false;
+
+        /// <summary>
         /// Gets or sets the move program path.
         /// </summary>
         /// <value>The move program path.</value>
@@ -55,6 +61,12 @@ namespace ParadisusIs
         /// </summary>
         /// <value>The move program arguments.</value>
         public string MoveProgramArguments { get; set; }
+
+        /// <summary>
+        /// Gets or sets a value indicating whether this <see cref="T:ParadisusIs.SettingsData"/> move program hide.
+        /// </summary>
+        /// <value><c>true</c> if move program hide; otherwise, <c>false</c>.</value>
+        public bool MoveProgramHide { get; set; } = false;
 
         /// <summary>
         /// Gets or sets the delete program path.
@@ -69,6 +81,12 @@ namespace ParadisusIs
         public string DeleteProgramArguments { get; set; }
 
         /// <summary>
+        /// Gets or sets a value indicating whether this <see cref="T:ParadisusIs.SettingsData"/> delete program hide.
+        /// </summary>
+        /// <value><c>true</c> if delete program hide; otherwise, <c>false</c>.</value>
+        public bool DeleteProgramHide { get; set; } = false;
+
+        /// <summary>
         /// Gets or sets the rename program path.
         /// </summary>
         /// <value>The rename program path.</value>
@@ -79,6 +97,12 @@ namespace ParadisusIs
         /// </summary>
         /// <value>The rename program arguments.</value>
         public string RenameProgramArguments { get; set; }
+
+        /// <summary>
+        /// Gets or sets a value indicating whether this <see cref="T:ParadisusIs.SettingsData"/> rename program hide.
+        /// </summary>
+        /// <value><c>true</c> if rename program hide; otherwise, <c>false</c>.</value>
+        public bool RenameProgramHide { get; set; } = false;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="T:PublicDomain.SettingsData"/> class.

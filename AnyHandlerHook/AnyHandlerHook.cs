@@ -48,6 +48,7 @@ namespace AnyHandlerHook
             string message = string.Empty;
             string programPath = string.Empty;
             string programArguments = string.Empty;
+            bool programHide = false;
             bool writeErrorLog = true; // Toggle if must skip
 
             try
@@ -72,6 +73,7 @@ namespace AnyHandlerHook
                         message = $"Source: {pszSrcFile}{Environment.NewLine}Destination: {pszDestFile}";
                         programPath = settingsData.CopyProgramPath;
                         programArguments = settingsData.CopyProgramArguments;
+                        programHide = settingsData.CopyProgramHide;
 
                         break;
 
@@ -82,6 +84,7 @@ namespace AnyHandlerHook
                         message = $"Source: {pszSrcFile}";
                         programPath = settingsData.DeleteProgramPath;
                         programArguments = settingsData.DeleteProgramArguments;
+                        programHide = settingsData.DeleteProgramHide;
 
                         break;
 
@@ -92,16 +95,18 @@ namespace AnyHandlerHook
                         message = $"Source: {pszSrcFile}{Environment.NewLine}Destination: {pszDestFile}";
                         programPath = settingsData.MoveProgramPath;
                         programArguments = settingsData.MoveProgramArguments;
+                        programHide = settingsData.MoveProgramHide;
 
                         break;
 
-                    // Remove
+                    // Rename
                     case (uint)CopyHookOperation.FO_RENAME:
 
                         operation = "Rename";
                         message = $"Source: {pszSrcFile}{Environment.NewLine}Destination: {pszDestFile}";
                         programPath = settingsData.RenameProgramPath;
                         programArguments = settingsData.RenameProgramArguments;
+                        programHide = settingsData.RenameProgramHide;
 
                         break;
                 }
@@ -141,6 +146,14 @@ namespace AnyHandlerHook
                         // Set arguments
                         process.StartInfo.Arguments = programArguments;
                     }
+
+                    // Check hide flag
+                    if (programHide)
+                    {
+                        // Hide the program window
+                        process.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;
+                    }
+
 
                     // Start the process
                     process.Start();

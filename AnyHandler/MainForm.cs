@@ -449,7 +449,7 @@ namespace AnyHandler
             var licenseText = $"CC0 1.0 Universal (CC0 1.0) - Public Domain Dedication{Environment.NewLine}" +
                 $"https://creativecommons.org/publicdomain/zero/1.0/legalcode{Environment.NewLine}{Environment.NewLine}" +
                 $"Libraries and icons have separate licenses.{Environment.NewLine}{Environment.NewLine}" +
-                $"Flat icon set by helloabt_com - Pixabay License{Environment.NewLine}" +
+                $"Flat icon set by helloabt_com - Pixabay Content License{Environment.NewLine}" +
                 $"https://pixabay.com/vectors/flat-icon-icon-set-graphics-box-967062/{Environment.NewLine}{Environment.NewLine}" +
                 $"GitHub mark icon used according to published logos and usage guidelines{Environment.NewLine}" +
                 $"https://github.com/logos{Environment.NewLine}{Environment.NewLine}" +
@@ -525,12 +525,16 @@ namespace AnyHandler
             // Operations' path and arguments
             this.copyProgramTextBox.Text = this.settingsData.CopyProgramPath;
             this.copyArgumentsTextBox.Text = this.settingsData.CopyProgramArguments;
+            this.copyHandlerHideCheckBox.Checked = this.settingsData.CopyProgramHide;
             this.moveProgramTextBox.Text = this.settingsData.MoveProgramPath;
             this.moveArgumentsTextBox.Text = this.settingsData.MoveProgramArguments;
+            this.moveHandlerHideCheckBox.Checked = this.settingsData.MoveProgramHide;
             this.deleteProgramTextBox.Text = this.settingsData.DeleteProgramPath;
             this.deleteArgumentsTextBox.Text = this.settingsData.DeleteProgramArguments;
+            this.deleteHandlerHideCheckBox.Checked = this.settingsData.DeleteProgramHide;
             this.renameProgramTextBox.Text = this.settingsData.RenameProgramPath;
             this.renameArgumentsTextBox.Text = this.settingsData.RenameProgramArguments;
+            this.renameHandlerHideCheckBox.Checked = this.settingsData.RenameProgramHide;
         }
 
         /// <summary>
@@ -547,13 +551,16 @@ namespace AnyHandler
             // Operations' path and arguments
             this.settingsData.CopyProgramPath = this.copyProgramTextBox.Text;
             this.settingsData.CopyProgramArguments = this.copyArgumentsTextBox.Text;
+            this.settingsData.CopyProgramHide = this.copyHandlerHideCheckBox.Checked;
             this.settingsData.MoveProgramPath = this.moveProgramTextBox.Text;
             this.settingsData.MoveProgramArguments = this.moveArgumentsTextBox.Text;
+            this.settingsData.MoveProgramHide = this.moveHandlerHideCheckBox.Checked;
             this.settingsData.DeleteProgramPath = this.deleteProgramTextBox.Text;
             this.settingsData.DeleteProgramArguments = this.deleteArgumentsTextBox.Text;
+            this.settingsData.DeleteProgramHide = this.deleteHandlerHideCheckBox.Checked;
             this.settingsData.RenameProgramPath = this.renameProgramTextBox.Text;
             this.settingsData.RenameProgramArguments = this.renameArgumentsTextBox.Text;
-
+            this.settingsData.RenameProgramHide = this.renameHandlerHideCheckBox.Checked;
 
             // Save settings data to disk
             this.settingsData.SaveSettingsFile();
